@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Lefto\\Monolog": "src"
+            "Lefto\\Monolog\\": "src"
         }
     }
 }
