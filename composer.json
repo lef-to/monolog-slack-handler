@@ -1,0 +1,21 @@
+{
+    "name": "lef-to/monolog-slack-handler",
+    "description": "Monolog handler for Slack incoming webhooks.",
+    "type": "library",
+    "require": {
+        "monolog/monolog": "^2.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Koji Ogawa",
+            "email": "pierre@lef.to"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lefto\\Monolog": "src"
+        }
+    },
+}
