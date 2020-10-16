@@ -25,7 +25,7 @@ class SlackHandler extends AbstractProcessingHandler
     protected $retryCount;
 
     /**
-     * @var callable
+     * @var callable|null
      */
     protected $retryDelay;
 
