@@ -3,7 +3,8 @@ declare(strict_types=1);
 namespace Lefto\Monolog\Formatter;
 
 use Monolog\Formatter\FormatterInterface;
-use Monolog\Logger;
+use Monolog\Level;
+use Monolog\LogRecord;
 
 class SlackFormatter implements FormatterInterface
 {
@@ -14,7 +15,7 @@ class SlackFormatter implements FormatterInterface
         $this->name = $name;
     }
 
-    public function format(array $record)
+    public function format(LogRecord $record)
     {
         $name = $this->name ?? $record['channel'];
 
@@ -76,13 +77,13 @@ class SlackFormatter implements FormatterInterface
 
     protected function getAttachmentColor(int $level): string
     {
-        if ($level >= Logger::ERROR) {
+        if ($level >= Level::Error) {
             return '#dc3545';
         }
-        if ($level >= Logger::WARNING) {
+        if ($level >= Level::Warning) {
             return '#ffc107';
         }
-        if ($level >= Logger::INFO) {
+        if ($level >= Level::Info) {
             return '#28a745';
         }
         return '#6c757d';

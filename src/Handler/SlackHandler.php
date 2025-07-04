@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace Lefto\Monolog\Handler;
 
-use MonoLog\Logger;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Formatter\FormatterInterface;
 use GuzzleHttp\Client;
@@ -11,6 +10,8 @@ use GuzzleHttp\Middleware;
 use GuzzleHttp\Exception\ConnectException;
 use Lefto\Monolog\Formatter\SlackFormatter;
 use Exception;
+use Monolog\Level;
+use Monolog\LogRecord;
 
 class SlackHandler extends AbstractProcessingHandler
 {
@@ -36,7 +37,7 @@ class SlackHandler extends AbstractProcessingHandler
 
     public function __construct(
         $url,
-        $level = Logger::ERROR,
+        $level = Level::Error,
         bool $bubble = true,
         $retryCount = 0,
         callable $retryDelay = null,
@@ -49,7 +50,7 @@ class SlackHandler extends AbstractProcessingHandler
         $this->throwException  = $throwException;
     }
 
-    protected function write(array $record): void
+    protected function write(LogRecord $record): void
     {
         $message = $record['formatted'];
 
